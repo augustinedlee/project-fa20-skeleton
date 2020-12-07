@@ -2,6 +2,8 @@ import networkx as nx
 from parse import read_input_file, write_output_file, read_output_file
 from utils import is_valid_solution, calculate_happiness, calculate_stress_for_room
 import sys
+from os.path import basename, normpath
+import glob
 
 
 def solve(G, s):
@@ -41,6 +43,7 @@ def solve(G, s):
                 people_in_room_i.remove(person_to_take_out)
         rooms = rooms + 1
     return D, rooms
+    # pass
 
 # sorted(g.edges(data=True),key= lambda x: x[2]['callDuration'],reverse=True)
 
@@ -64,13 +67,13 @@ if __name__ == '__main__':
 
 # For testing a folder of inputs to create a folder of outputs, you can use glob (need to import it)
 # if __name__ == '__main__':
-#     inputs = glob.glob('file_path/inputs/*')
+#     inputs = glob.glob('inputs/*')
 #     for input_path in inputs:
-#         output_path = 'file_path/outputs/' + basename(normpath(input_path))[:-3] + '.out'
-#         G, s = read_input_file(input_path, 100)
+#         output_path = 'outputs/' + basename(normpath(input_path))[:-3] + '.out'
+#         G, s = read_input_file(input_path)
 #         D, k = solve(G, s)
 #         assert is_valid_solution(D, G, s, k)
-#         cost_t = calculate_happiness(T)
+#         happiness = calculate_happiness(D, G)
 #         write_output_file(D, output_path)
 
 #pass in 2d array of outputs where each line represents a room,
